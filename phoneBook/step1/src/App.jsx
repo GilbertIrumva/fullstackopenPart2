@@ -7,12 +7,10 @@ const App = () => {
   const [newNumber, setNewNumber] = useState("")
   const [search, setSearch] = useState("")
 
-  // LOAD DATA
   useEffect(() => {
     personService.getAll().then(setPersons)
   }, [])
 
-  // ADD OR UPDATE
   const addNewName = (e) => {
     e.preventDefault()
 
@@ -20,7 +18,6 @@ const App = () => {
       p => p.name.toLowerCase() === newName.toLowerCase()
     )
 
-    // UPDATE FLOW
     if (existingPerson) {
       const confirmUpdate = window.confirm(
         `${newName} already exists. Replace number with the old one??`
@@ -58,7 +55,6 @@ const App = () => {
       })
   }
 
-  // DELETE
   const deletePerson = (id, name) => {
     const ok = window.confirm(`Delete ${name}?`)
     if (!ok) return
@@ -68,7 +64,6 @@ const App = () => {
     })
   }
 
-  // FILTER
   const filteredPersons = persons.filter(p =>
     p.name.toLowerCase().includes(search.toLowerCase())
   )
