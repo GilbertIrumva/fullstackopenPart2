@@ -105,7 +105,7 @@ const App = () => {
       <h3>Numbers</h3>
 
       {filteredPersons.map(p => (
-        <div key={p.id} className="person">
+        <div key={p.id ?? p.name} className="person">
           <span className="person-info">
             {p.name}
             <span className="person-number">{p.number}</span>
